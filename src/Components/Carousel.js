@@ -23,6 +23,7 @@ function Carousel({slides}) {
     return (
     <section className="slider">
     <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide}/>
+    <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
     {SliderData.map((slide, index) => {
         return (
             <div className={index === current ? 'slide active' : 'slide'} key={index}>
@@ -32,7 +33,6 @@ function Carousel({slides}) {
             </div>
         )
     })}
-    <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide}/>
     </section>
     
     )
