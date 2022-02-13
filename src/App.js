@@ -6,6 +6,8 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Main from './Components/Main';
 import Navbar from './Components/Navbar/Navbar';
+import FeaturedProducts from './Components/FeaturedProducts/FeaturedProducts';
+import { FeaturedProductsData } from './Components/FeaturedProducts/FeaturedProductsData';
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
       <Navbar/>
       <Header/>
       <Carousel slides={SliderData}/>
+      <FeaturedProducts FeaturedProductsData={FeaturedProductsData}/>
       <Login/>
       <Signup/>
       <Main/>

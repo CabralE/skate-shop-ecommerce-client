@@ -244,3 +244,33 @@
 }
 
 /* -------------------------------------------------------------------------------- */
+
+/* ---------- FeaturedProducts component ---------- */
+
+.featuredData {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.featuredProducts-container{
+  width: 200px;
+  height: 400px;
+  border-radius: 10px;
+}
+
+.featuredProducts-button {
+  /* display: none; */
+  margin: auto;
+  z-index: 10;
+}
+
+
+.featuredProducts-image {
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+/* -------------------------------------------------------------------------------- */
