@@ -1,3 +1,5 @@
+import '../../CSS/featuredProductsData.css'
+
 function FeaturedProducts(props) {
     const featureData = props.FeaturedProductsData
     console.log(featureData)
@@ -8,11 +10,15 @@ function FeaturedProducts(props) {
     <section className="featuredData"> 
     {featureData.map((data, index) => {
         return (
-            <div className="featuredProducts-container" >
-                <button className="featuredProducts-button">add to cart</button>
-                <img src={data.image} className="featuredProducts-image"/>
-                <p>{data.tag}</p>
-                <p>${data.price}</p>
+            <div className="featuredProducts-card" >
+                <img src={data.image} className="featuredProducts-card-img"/>
+                <div className='featuredProducts-card-body'>
+                    <h2 className="featuredProducts-card-brand">{data.brand}</h2>
+                    <p className="featuredProducts-card-description">{data.descption}</p>
+                    <h3 className="featuredProducts-card-price">${data.price}</h3>
+                    <button className="featuredProducts-button">add to cart</button>
+                </div>
+
             </div>
         )})
     }
