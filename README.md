@@ -16,3 +16,7 @@ Front-end site: https://skate-shop-ecommerce.netlify.app/
 GitHub Repository: https://github.com/CabralE/skate-shop-ecommerce-client
 Backend site:
 GitHub Repository: https://github.com/Gregorio-Moreta/Skate-Ecommerce-Backend
+
+Issues:
+- - - -
+- featuredProducts component is not as respnsive as it should be. The `add to cart` button phases out for any width less than 450px.
