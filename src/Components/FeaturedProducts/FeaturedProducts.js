@@ -1,31 +1,52 @@
+import React from 'react'
 import '../../CSS/featuredProductsData.css'
+import { Typography, Card, CardActions, CardContent, CardMedia, Button, Container, Grid} from '@mui/material'
+
+import useStyles from './Styles'
+
+// https://source.unsplash.com/random/
 
 function FeaturedProducts(props) {
+    const classes = useStyles() 
     const featureData = props.FeaturedProductsData
-    console.log(featureData)
+    const cards = [1,2,3,4,5,6,7,8,9]
     return (
     <>
     <hr/>
     <br/>
-    <section className="featuredData"> 
-    {featureData.map((data, index) => {
-        return (
-            <div className="featuredProducts-card" >
-                <img src={data.image} className="featuredProducts-card-img"/>
-                <div className='featuredProducts-card-body'>
-                    <h2 className="featuredProducts-card-brand">{data.brand}</h2>
-                    <p className="featuredProducts-card-description">{data.descption}</p>
-                    <h3 className="featuredProducts-card-price">${data.price}</h3>
-                    <button className="featuredProducts-button">add to cart</button>
-                </div>
-
-            </div>
-        )})
-    }
-    </section>
-
-    <br />
-    <hr />
+    <Container className={classes.cardGrid} maxWidth="md"> 
+    <Grid container spacing={4}>
+        {featureData.map((featureData) => (
+            <Grid item key={featureData} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                    <CardMedia
+                        component="img"
+                        className={classes.cardMedia}
+                        image={featureData.image}
+                        title="Image title"
+                        alt="Image"
+                    />
+                    <CardContent className={classes.cardContent}>
+                        <Typography gutterBottom variant="h5">
+                            {featureData.brand}
+                        </Typography>
+                        <Typography>
+                            {featureData.description}
+                        </Typography>
+                        <Typography>
+                            ${featureData.price}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small" color="primary">View</Button>
+                        <Button size="small" color="primary">Add to Cart</Button>
+                    </CardActions>
+                </Card>
+            </Grid>
+        ))}
+        
+    </Grid>
+    </Container>
     </>
     )
 }
