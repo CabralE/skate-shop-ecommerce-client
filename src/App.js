@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <Header/>
       <Carousel slides={SliderData}/>
       <FeaturedProducts FeaturedProductsData={FeaturedProductsData}/>
       <Login/>
