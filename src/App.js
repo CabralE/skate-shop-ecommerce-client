@@ -8,6 +8,7 @@ import Main from './Components/Main';
 import Navbar from './Components/Navbar/Navbar';
 import FeaturedProducts from './Components/FeaturedProducts/FeaturedProducts';
 import { FeaturedProductsData } from './Components/FeaturedProducts/FeaturedProductsData';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -15,9 +16,7 @@ function App() {
       <Navbar/>
       <Carousel slides={SliderData}/>
       <FeaturedProducts FeaturedProductsData={FeaturedProductsData}/>
-      <Login/>
-      <Signup/>
-      <Main/>
+      <Footer/>
     </div>
   );
 }

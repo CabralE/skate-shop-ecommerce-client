@@ -6,7 +6,7 @@ const useStyles = styled((theme) => ({
         padding: theme.spacing(8, 0, 6)
     },
     cardGrid: {
-        padding: '20px 0'
+        paddingTop: '20px'
     },
     card: {
         height: '100%',
