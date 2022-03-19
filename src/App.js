@@ -35,6 +35,7 @@ function App() {
 
       <Carousel slides={SliderData} />
       <FeaturedProducts FeaturedProductsData={FeaturedProductsData} />
+      <Footer/>
     </div>
   );
 }
