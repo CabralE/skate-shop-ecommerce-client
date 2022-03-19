@@ -5,7 +5,7 @@ import Link from '@mui/material/Link'
 
 function Footer(props) {
   return (
-    <footer>
+    <footer className="footer-container">
       <Box 
         px={{ xs:3, sm:10}} 
         py={{ xs:5, sm:10}} 
