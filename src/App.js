@@ -9,7 +9,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import FeaturedProducts from "./Components/FeaturedProducts/FeaturedProducts";
 import { FeaturedProductsData } from "./Components/FeaturedProducts/FeaturedProductsData";
 import Footer from "./Components/Footer/Footer";
-import LoginButton from "./Components/LoginButton";
+// import LoginButton from "./Components/LoginButton";
 import LogoutButton from "./Components/LogoutButton";
 import Profile from "./Profile";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -26,7 +26,7 @@ function App() {
         {!error && isLoading && <p>Loading...</p>}
         {!error && !isLoading && (
           <>
-            <LoginButton />
+            {/* <LoginButton /> */}
             <LogoutButton />
             <Profile />
           </>
