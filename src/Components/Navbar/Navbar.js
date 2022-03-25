@@ -2,6 +2,7 @@ import React, {useState, Component} from "react";
 import { MenuItems } from "./MenuItems"
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { Button } from "./Button";
+import LoginButton from "../LoginButton"
 
 
 function Navbar(props) {
@@ -33,6 +34,7 @@ function Navbar(props) {
             })}
         </ul>
         <Button>Signup</Button>
+            <LoginButton></LoginButton>
     </nav>
     
         
