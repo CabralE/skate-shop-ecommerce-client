@@ -8,6 +8,7 @@ import Show from "./Pages/Show";
 import Index from "./Pages/Index";
 import LogoutButton from "./Components/LogoutButton";
 import Profile from "./Profile";
+import Product from "./Pages/Product";
 
 function App() {
   const { isLoading, error } = useAuth0();
@@ -46,6 +47,10 @@ function App() {
         <Route
           path="/show/:id"
           element={<Show productInformation={productInformation} />}
+        />
+        <Route
+          path="/product"
+          element={<Product productInformation={productInformation} />}
         />
       </Routes>
       <Footer />
