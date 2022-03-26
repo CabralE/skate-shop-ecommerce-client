@@ -1,5 +1,17 @@
+import "../App.css";
+import Carousel from "../Components/Carousel";
+import { SliderData } from "../Components/SliderData";
+import FeaturedProductsTest from "../Components/FeaturedProducts/FeaturedProductsTest";
+
 function Index(props) {
-    return <h1>Index Name</h1>
+  const productInformation = props.productInformation;
+
+  return (
+    <>
+      <Carousel slides={SliderData} />
+      <FeaturedProductsTest productInformation={productInformation} />
+    </>
+  );
 }
 
-export default Index
+export default Index;

@@ -1,24 +1,17 @@
 import "./App.css";
-import Header from "./Components/Header";
-import Carousel from "./Components/Carousel";
-import { SliderData } from "./Components/SliderData";
-import Login from "./Pages/Login";
-import Signup from "./Pages/Signup";
-import Main from "./Components/Main";
 import Navbar from "./Components/Navbar/Navbar";
-import FeaturedProducts from "./Components/FeaturedProducts/FeaturedProducts";
-import { FeaturedProductsData } from "./Components/FeaturedProducts/FeaturedProductsData";
 import Footer from "./Components/Footer/Footer";
-// import LoginButton from "./Components/LoginButton";
-import LogoutButton from "./Components/LogoutButton";
-import Profile from "./Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
-import FeaturedProductsTest from "./Components/FeaturedProducts/FeaturedProductsTest";
+import { Route, Routes } from "react-router-dom";
+import Show from "./Pages/Show";
+import Index from "./Pages/Index";
+import LogoutButton from "./Components/LogoutButton";
+import Profile from "./Profile";
 
 function App() {
   const { isLoading, error } = useAuth0();
-  const productURL = "https://skate-ecommerce.herokuapp.com/product";
+  const productURL = "https://skate-ecommerce.herokuapp.com/product/";
 
   const [productInformation, setProductInformtion] = useState(null);
 
@@ -39,16 +32,22 @@ function App() {
         {!error && isLoading && <p>Loading...</p>}
         {!error && !isLoading && (
           <>
-            {/* <LoginButton /> */}
             <LogoutButton />
             <Profile />
           </>
         )}
       </main>
 
-      <Carousel slides={SliderData} />
-      <FeaturedProductsTest productInformation={productInformation} />
-      {/*<FeaturedProducts FeaturedProductsData={FeaturedProductsData} />*/}
+      <Routes>
+        <Route
+          path="/"
+          element={<Index productInformation={productInformation} />}
+        />
+        <Route
+          path="/show/:id"
+          element={<Show productInformation={productInformation} />}
+        />
+      </Routes>
       <Footer />
     </div>
   );
