@@ -13,15 +13,28 @@ import Footer from "./Components/Footer/Footer";
 import LogoutButton from "./Components/LogoutButton";
 import Profile from "./Profile";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useState, useEffect } from "react";
+import FeaturedProductsTest from "./Components/FeaturedProducts/FeaturedProductsTest";
 
 function App() {
   const { isLoading, error } = useAuth0();
+  const productURL = "https://skate-ecommerce.herokuapp.com/product";
+
+  const [productInformation, setProductInformtion] = useState(null);
+
+  const fetchProductInformation = async () => {
+    const response = await fetch(productURL);
+    const data = await response.json();
+    setProductInformtion(data);
+    console.log(data);
+  };
+
+  useEffect(() => fetchProductInformation(), []);
 
   return (
     <div className="App">
       <Navbar />
       <main className="column">
-        <h1>Auth0 Login</h1>
         {error && <p>Authentication Error</p>}
         {!error && isLoading && <p>Loading...</p>}
         {!error && !isLoading && (
@@ -34,8 +47,9 @@ function App() {
       </main>
 
       <Carousel slides={SliderData} />
-      <FeaturedProducts FeaturedProductsData={FeaturedProductsData} />
-      <Footer/>
+      <FeaturedProductsTest productInformation={productInformation} />
+      {/*<FeaturedProducts FeaturedProductsData={FeaturedProductsData} />*/}
+      <Footer />
     </div>
   );
 }
