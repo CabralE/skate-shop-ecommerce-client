@@ -10,7 +10,7 @@ import {
   Container,
   Grid,
 } from "@mui/material";
-
+import { Link } from "react-router-dom";
 import useStyles from "./Styles";
 
 function FeaturedProductsTest(props) {
@@ -43,7 +43,12 @@ function FeaturedProductsTest(props) {
                   <Typography>${featureData.price}</Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" color="primary">
+                  <Button
+                    component={Link}
+                    size="small"
+                    color="primary"
+                    to={"/product/" + featureData._id}
+                  >
                     View
                   </Button>
                   <Button size="small" color="primary">
