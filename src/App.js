@@ -3,12 +3,13 @@ import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Show from "./Pages/Show";
 import Index from "./Pages/Index";
 import LogoutButton from "./Components/LogoutButton";
 import Profile from "./Profile";
 import Product from "./Pages/Product";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   const { isLoading, error } = useAuth0();
@@ -20,7 +21,6 @@ function App() {
     const response = await fetch(productURL);
     const data = await response.json();
     setProductInformtion(data);
-    console.log(data);
   };
 
   useEffect(() => fetchProductInformation(), []);
@@ -49,10 +49,12 @@ function App() {
           element={<Show productInformation={productInformation} />}
         />
         <Route
-          path="/product"
+          path="/product/:id"
           element={<Product productInformation={productInformation} />}
         />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
+
       <Footer />
     </div>
   );

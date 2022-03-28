@@ -13,15 +13,20 @@ import {
   Button,
 } from "@mui/material";
 import { red, blue, green } from "@mui/material/colors";
-import { LoremIpsum } from "react-lorem-ipsum";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 function Product(props) {
-  //   const deconstructedProductInformation = props.deconstructedProductInformation;
-  //   const id = props.match.params.id;
+  const deconstructedProductInformation = props.productInformation;
   const [selectedValue, setSelectedValue] = useState("a");
   const [age, setAge] = useState("");
   const [open, setOpen] = useState(false);
+
+  let { id } = useParams();
+
+  const product = deconstructedProductInformation?.find(
+    (ele) => ele._id === id
+  );
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -60,29 +65,30 @@ function Product(props) {
     return number;
   }
 
+  const renderImage = (variable) => {
+    return variable[0];
+  };
+
   return (
-    <Container sx={{ width: 1000, display: "flex" }}>
-      <Box sx={{ width: "50%" }} marginTop={5} marginRight={2}>
+    <Container
+      sx={{ width: 1000, display: "flex" }}
+      maxWidth="md"
+      xs={12}
+      sm={6}
+      md={3}
+    >
+      <Box sx={{ width: "50%" }} marginTop={5} marginRight={2} sm={6}>
         <img
-          src="https://source.unsplash.com/random/"
-          alt="random-image"
-          min-height={450}
+          src={product?.image}
+          alt="product-image"
+          min-height={300}
           width={300}
         />
       </Box>
       <Container>
         <Box>
           <Typography marginTop={5}>
-            <text>
-              Lorem ipsum odor amet, consectetuer adipiscing elit. Vestibulum
-              rhoncus bibendum quis vel sagittis. Accumsan ullamcorper a
-              phasellus eget aenean. Fames suspendisse torquent velit venenatis
-              vehicula libero erat. Parturient molestie ex scelerisque, morbi
-              neque tempus fusce. Posuere interdum finibus quis condimentum nisi
-              maximus morbi. Placerat proin dignissim ad ad fringilla blandit at
-              ac. Magna elit habitasse mattis ante augue feugiat. Non suscipit
-              aptent lacinia dis auctor; porttitor sollicitudin augue pharetra.
-            </text>
+            <text>{product?.description}</text>
           </Typography>
         </Box>
         <Container marginTop={2}>
