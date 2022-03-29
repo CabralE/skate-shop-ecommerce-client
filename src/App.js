@@ -10,6 +10,7 @@ import LogoutButton from "./Components/LogoutButton";
 import Profile from "./Profile";
 import Product from "./Pages/Product";
 import ErrorPage from "./Pages/ErrorPage";
+import NavBar2 from "./Components/Navbar/Navbar2";
 
 function App() {
   const { isLoading, error } = useAuth0();
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <NavBar2 />
       <main className="column">
         {error && <p>Authentication Error</p>}
         {!error && isLoading && <p>Loading...</p>}
