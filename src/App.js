@@ -11,6 +11,7 @@ import Profile from "./Profile";
 import Product from "./Pages/Product";
 import ErrorPage from "./Pages/ErrorPage";
 import NavBar2 from "./Components/Navbar/Navbar2";
+import LoginButton from "./Components/LoginButton";
 
 function App() {
   const { isLoading, error } = useAuth0();
@@ -32,12 +33,7 @@ function App() {
       <main className="column">
         {error && <p>Authentication Error</p>}
         {!error && isLoading && <p>Loading...</p>}
-        {!error && !isLoading && (
-          <>
-            <LogoutButton />
-            <Profile />
-          </>
-        )}
+        {!error && !isLoading && <></>}
       </main>
 
       <Routes>
