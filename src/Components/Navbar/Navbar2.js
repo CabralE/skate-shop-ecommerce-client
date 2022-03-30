@@ -12,13 +12,18 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import LoginButton from "../LoginButton";
+import LogoutButton from "../LogoutButton";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const pages = ["Products"];
-const settings = ["Profile", "Account", "Cart", "Logout"];
+const settings = ["Profile", "Account", "Cart"];
 
 const NavBar2 = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const { user, isAuthenticated } = useAuth0();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -90,7 +95,7 @@ const NavBar2 = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            LOGO
+            The Shop
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -102,12 +107,38 @@ const NavBar2 = () => {
                 {page}
               </Button>
             ))}
+            <Button
+              key="home"
+              component={Link}
+              onClick={handleCloseNavMenu}
+              to="/"
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Home
+            </Button>
+            {isAuthenticated && (
+              <Button
+                alt={user?.name}
+                src={user.picture}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Hello, {user?.name}
+              </Button>
+            )}
+            {!isAuthenticated && (
+              <Button alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+            )}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {isAuthenticated && (
+                  <Avatar alt={user?.name} src={user.picture} />
+                )}
+                {!isAuthenticated && (
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                )}
               </IconButton>
             </Tooltip>
             <Menu
@@ -131,6 +162,13 @@ const NavBar2 = () => {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+
+              <MenuItem key="login" onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">
+                  <LoginButton />
+                  <LogoutButton />
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
