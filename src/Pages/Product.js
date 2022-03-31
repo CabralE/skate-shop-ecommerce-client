@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { red, blue, green } from "@mui/material/colors";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function Product(props) {
   const deconstructedProductInformation = props.productInformation;
@@ -56,11 +56,11 @@ function Product(props) {
     let totalQuantityChoices = 99;
     let allTags = [];
     for (let i = 0; i < totalQuantityChoices; i++) {
-      allTags.push(<MenuItem value={i}>{i}</MenuItem>);
+      allTags.push("<MenuItem value={i}>{i}</MenuItem>");
     }
-    return allTags.map(returnDropDownSelections());
+    return allTags;
   };
-
+  console.log(quantityDropDownSelection);
   function returnDropDownSelections(number) {
     return number;
   }
@@ -71,28 +71,28 @@ function Product(props) {
 
   return (
     <Container
-      sx={{ width: 1000, display: "flex" }}
+      sx={{ display: "flex", justifyContent: "center" }}
       maxWidth="md"
       xs={12}
       sm={6}
       md={3}
     >
-      <Box sx={{ width: "50%" }} marginTop={5} marginRight={2} sm={6}>
+      <Box sx={{ width: "50%" }} marginTop={5} marginRight={2} sm={2} col={3}>
         <img
           src={product?.image}
           alt="product-image"
-          min-height={300}
-          width={300}
+          height="380"
+          style={{ width: "fit-content" }}
         />
       </Box>
-      <Container>
+      <Container sx={{ display: "flex", flexDirection: "column" }}>
         <Box>
           <Typography marginTop={5}>
             <text>{product?.description}</text>
           </Typography>
         </Box>
         <Container marginTop={2}>
-          <FormControl marginTop={2}>
+          {/*<FormControl marginTop={2}>
             <FormLabel id="demo-row-radio-buttons-group-label">Color</FormLabel>
             <RadioGroup
               row
@@ -150,9 +150,12 @@ function Product(props) {
                 label="Green"
               />
             </RadioGroup>
-          </FormControl>
-          <div>
-            <Button sx={{ display: "block", mt: 2 }} onClick={handleOpen}>
+              </FormControl> */}
+          <Container
+            sm={{ display: "flex", flexDirection: "column" }}
+            sx={{ mt: 10 }}
+          >
+            <Button sx={{ mt: 2 }} onClick={handleOpen}>
               Select Quantity
             </Button>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -172,20 +175,31 @@ function Product(props) {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                {/*quantityDropDownSelection()*/}
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+                <MenuItem value={5}>5</MenuItem>
+                <MenuItem value={6}>6</MenuItem>
+                <MenuItem value={7}>7</MenuItem>
+                <MenuItem value={8}>8</MenuItem>
+                <MenuItem value={9}>9</MenuItem>
                 <MenuItem value={10}>10</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
               </Select>
             </FormControl>
-            <Button
-              sx={{ display: "inline", mt: 2 }}
-              variant="contained"
-              color="success"
-            >
+            <Button sx={{ mt: 10 }} variant="contained" color="success">
               Add to Cart
             </Button>
-          </div>
+            <Button
+              sx={{ mt: 10 }}
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to="/"
+            >
+              Back
+            </Button>
+          </Container>
         </Container>
       </Container>
     </Container>
