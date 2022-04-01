@@ -9,6 +9,7 @@ import Index from "./Pages/Index";
 import LogoutButton from "./Components/LogoutButton";
 import Profile from "./Profile";
 import Product from "./Pages/Product";
+import Cart from "./Pages/Cart";
 import ErrorPage from "./Pages/ErrorPage";
 import NavBar2 from "./Components/Navbar/Navbar2";
 import LoginButton from "./Components/LoginButton";
@@ -50,6 +51,10 @@ function App() {
           element={<Product productInformation={productInformation} />}
         />
         <Route path="*" element={<ErrorPage />} />
+        <Route
+          path="/cart"
+          element={<Cart/>}
+        />
       </Routes>
 
       <Footer />
